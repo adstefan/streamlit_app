@@ -67,6 +67,7 @@ add_my_fruit = streamlit.text_input('View Our Fruit List - Add Your Favorites!')
 if streamlit.button('Get Fruit List'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     back_from_function = insert_row_snowflake(add_my_fruit)
+    my_cnx.close()
     streamlit.text(back_from_function)
     
     #dont run anything past here while we trobleshoot
